@@ -12,24 +12,7 @@
 */
 
 
-if (isset($_SERVER['HTTP_ORIGIN'])) {
-    //header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-    header("Access-Control-Allow-Origin: *");
-    header('Access-Control-Allow-Credentials: true');    
-    header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); 
-}   
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-        header("Access-Control-Allow-Headers:{$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-
-    exit(0);
-} 
-
-
-
-	Route::get('/', function () {
+Route::get('/', function () {
 	    return view('welcome');
 	});
 
@@ -175,3 +158,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 /* Image Controller*/
 
 	Route::post('uploadphoto', 'ImageController@imageupload');
+
+
+/* Report Controller */
+	
+	Route::get('report', 'ReportController@index');
+
+	Route::get('getReportYear/{year}', 'ReportController@getYear');
+
+	Route::get('getReportYearMonth/{year}/{month}', 'ReportController@getYearMonth');
+
+	Route::get('getReportProduct/{product}', 'ReportController@getProduct');
+
+	Route::get('getReportProductYear/{product}/{year}', 'ReportController@getProductYear');
+
+	Route::get('getReportProductYearMonth/{product}/{year}/{month}', 'ReportController@getProductYearMonth');
+
+	Route::get('getReportUser/{user}', 'ReportController@getUser');
+
+	Route::get('getReportUserYear/{user}/{year}', 'ReportController@getUserYear');
+
+	Route::get('getReportUserYearMonth/{user}/{year}/{month}', 'ReportController@getUserYearMonth');
