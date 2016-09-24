@@ -106,7 +106,7 @@
 	Route::get('getCaseYearMonth/{year}/{month}', 'CasedController@getCaseYearMonth');
 
 	Route::get('getCaseUser/{user}', 'CasedController@getCaseUser');
-	
+
 	Route::get('getCaseUserYear/{user}/{year}', 'CasedController@getCaseUserYear');
 
 	Route::get('getCaseUserYearMonth/{user}/{year}/{month}', 'CasedController@getCaseUserYearMonth');
@@ -129,6 +129,16 @@
 	Route::get('getOpenTicketUser/{id}', 'TicketController@getOpenTicketUser');
 
 	Route::get('getCloseTicketUser/{id}', 'TicketController@getCloseTicketUser');
+
+	Route::get('getTicketUser/{user}', 'TicketController@getTicketUser');
+
+	Route::get('getTicketUserYear/{user}/{year}', 'TicketController@getTicketUserYear');
+
+	Route::get('getTicketUserYearMonth/{user}/{year}/{month}', 'TicketController@getTicketUserYearMonth');
+
+	Route::get('getTicketYear/{year}', 'TicketController@getTicketYear');
+
+	Route::get('getTicketYearMonth/{year}/{month}', 'TicketController@getTicketYearMonth');
 
 /* Appoinment Controller*/
 
