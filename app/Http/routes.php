@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', function () {
+	Route::get('/', function () {
 	    return view('welcome');
 	});
 
@@ -101,6 +101,17 @@ Route::get('/', function () {
 
 	Route::get('getCloseCaseUser/{id}', 'CasedController@getCloseCaseUser');
 
+	Route::get('getCaseYear/{year}', 'CasedController@getCaseYear');
+
+	Route::get('getCaseYearMonth/{year}/{month}', 'CasedController@getCaseYearMonth');
+
+	Route::get('getCaseUser/{user}', 'CasedController@getCaseUser');
+	
+	Route::get('getCaseUserYear/{user}/{year}', 'CasedController@getCaseUserYear');
+
+	Route::get('getCaseUserYearMonth/{user}/{year}/{month}', 'CasedController@getCaseUserYearMonth');
+
+
 /* Ticket Controller*/
 
 	Route::get('ticket', 'TicketController@index');
@@ -129,13 +140,23 @@ Route::get('/', function () {
 
 	Route::post('appoinment/edit/{id}', 'AppoinmentController@update');
 
-        Route::get('getAppoinmentUser/{id}', 'AppoinmentController@getAppoinmentUser');
+    Route::get('getAppoinmentUser/{id}', 'AppoinmentController@getAppoinmentUser');
 
-        Route::get('getAppoinmentUserOpen/{id}', 'AppoinmentController@getAppoinmentUserOpen');
+    Route::get('getAppoinmentUserOpen/{id}', 'AppoinmentController@getAppoinmentUserOpen');
 
-        Route::get('getAppoinmentUserClose/{id}', 'AppoinmentController@getAppoinmentUserClose');
+    Route::get('getAppoinmentUserClose/{id}', 'AppoinmentController@getAppoinmentUserClose');
 
-        Route::get('getAppoinmentUserUpcoming/{id}', 'AppoinmentController@getAppoinmentUserUpcoming');
+    Route::get('getAppoinmentUserUpcoming/{id}', 'AppoinmentController@getAppoinmentUserUpcoming');
+
+    Route::get('getAppoinmentYear/{year}', 'AppoinmentController@getAppoinmentYear');
+
+    Route::get('getAppoinmentYearMonth/{year}/{month}', 'AppoinmentController@getAppoinmentYearMonth');
+
+    Route::get('getAppoinmentUserYear/{user}/{year}', 'AppoinmentController@getAppoinmentUserYear');
+
+    Route::get('getAppoinmentUserYearMonth/{user}/{year}/{month}', 'AppoinmentController@getAppoinmentUserYearMonth');
+
+
 
 
 /* Todo Controller*/
