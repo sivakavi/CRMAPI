@@ -96,4 +96,29 @@ class CasedController extends Controller
         return \Response::json($case);
     }
 
+    public function getCaseYear($year){
+        $case = Cased::info()->whereYear('created_at','=',$year)->get();
+        return \Response::json($case);
+    }
+
+    public function getCaseYearMonth($year, $month){
+        $case = Cased::info()->whereYear('created_at','=',$year)->whereMonth('created_at','=',$month)->get();
+        return \Response::json($case);
+    }
+
+    public function getCaseUser($user){
+        $case = Cased::info()->where('user_id',$user)->get();
+        return \Response::json($case);
+    }
+
+    public function getCaseUserYear($user, $year){
+        $case = Cased::info()->where('user_id',$user)->whereYear('created_at','=',$year)->get();
+        return \Response::json($case);
+    }
+
+    public function getCaseUserYearMonth($user, $year, $month){
+        $case = Cased::info()->where('user_id',$user)->whereYear('created_at','=',$year)->whereMonth('created_at','=',$month)->get();
+        return \Response::json($case);
+    }
+
 }

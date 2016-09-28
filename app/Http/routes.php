@@ -12,23 +12,6 @@
 */
 
 
-if (isset($_SERVER['HTTP_ORIGIN'])) {
-    //header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-    header("Access-Control-Allow-Origin: *");
-    header('Access-Control-Allow-Credentials: true');    
-    header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); 
-}   
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-        header("Access-Control-Allow-Headers:{$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-
-    exit(0);
-} 
-
-
-
 	Route::get('/', function () {
 	    return view('welcome');
 	});
@@ -118,6 +101,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 	Route::get('getCloseCaseUser/{id}', 'CasedController@getCloseCaseUser');
 
+	Route::get('getCaseYear/{year}', 'CasedController@getCaseYear');
+
+	Route::get('getCaseYearMonth/{year}/{month}', 'CasedController@getCaseYearMonth');
+
+	Route::get('getCaseUser/{user}', 'CasedController@getCaseUser');
+
+	Route::get('getCaseUserYear/{user}/{year}', 'CasedController@getCaseUserYear');
+
+	Route::get('getCaseUserYearMonth/{user}/{year}/{month}', 'CasedController@getCaseUserYearMonth');
+
+
 /* Ticket Controller*/
 
 	Route::get('ticket', 'TicketController@index');
@@ -136,6 +130,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 	Route::get('getCloseTicketUser/{id}', 'TicketController@getCloseTicketUser');
 
+	Route::get('getTicketUser/{user}', 'TicketController@getTicketUser');
+
+	Route::get('getTicketUserYear/{user}/{year}', 'TicketController@getTicketUserYear');
+
+	Route::get('getTicketUserYearMonth/{user}/{year}/{month}', 'TicketController@getTicketUserYearMonth');
+
+	Route::get('getTicketYear/{year}', 'TicketController@getTicketYear');
+
+	Route::get('getTicketYearMonth/{year}/{month}', 'TicketController@getTicketYearMonth');
+
 /* Appoinment Controller*/
 
 	Route::get('appoinment', 'AppoinmentController@index');
@@ -146,13 +150,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 	Route::post('appoinment/edit/{id}', 'AppoinmentController@update');
 
-        Route::get('getAppoinmentUser/{id}', 'AppoinmentController@getAppoinmentUser');
+    Route::get('getAppoinmentUser/{id}', 'AppoinmentController@getAppoinmentUser');
 
-        Route::get('getAppoinmentUserOpen/{id}', 'AppoinmentController@getAppoinmentUserOpen');
+    Route::get('getAppoinmentUserOpen/{id}', 'AppoinmentController@getAppoinmentUserOpen');
 
-        Route::get('getAppoinmentUserClose/{id}', 'AppoinmentController@getAppoinmentUserClose');
+    Route::get('getAppoinmentUserClose/{id}', 'AppoinmentController@getAppoinmentUserClose');
 
-        Route::get('getAppoinmentUserUpcoming/{id}', 'AppoinmentController@getAppoinmentUserUpcoming');
+    Route::get('getAppoinmentUserUpcoming/{id}', 'AppoinmentController@getAppoinmentUserUpcoming');
+
+    Route::get('getAppoinmentYear/{year}', 'AppoinmentController@getAppoinmentYear');
+
+    Route::get('getAppoinmentYearMonth/{year}/{month}', 'AppoinmentController@getAppoinmentYearMonth');
+
+    Route::get('getAppoinmentUserYear/{user}/{year}', 'AppoinmentController@getAppoinmentUserYear');
+
+    Route::get('getAppoinmentUserYearMonth/{user}/{year}/{month}', 'AppoinmentController@getAppoinmentUserYearMonth');
+
+
 
 
 /* Todo Controller*/
@@ -175,3 +189,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 /* Image Controller*/
 
 	Route::post('uploadphoto', 'ImageController@imageupload');
+
+
+/* Report Controller */
+	
+	Route::get('report', 'ReportController@index');
+
+	Route::get('getReportYear/{year}', 'ReportController@getYear');
+
+	Route::get('getReportYearMonth/{year}/{month}', 'ReportController@getYearMonth');
+
+	Route::get('getReportProduct/{product}', 'ReportController@getProduct');
+
+	Route::get('getReportProductYear/{product}/{year}', 'ReportController@getProductYear');
+
+	Route::get('getReportProductYearMonth/{product}/{year}/{month}', 'ReportController@getProductYearMonth');
+
+	Route::get('getReportUser/{user}', 'ReportController@getUser');
+
+	Route::get('getReportUserYear/{user}/{year}', 'ReportController@getUserYear');
+
+	Route::get('getReportUserYearMonth/{user}/{year}/{month}', 'ReportController@getUserYearMonth');

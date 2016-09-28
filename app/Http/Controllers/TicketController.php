@@ -96,4 +96,29 @@ class TicketController extends Controller
         return \Response::json($ticket);
     }
 
+    public function getTicketYear($year){
+        $ticket = Ticket::info()->whereYear('created_at','=',$year)->get();
+        return \Response::json($ticket);
+    }
+
+    public function getTicketYearMonth($year, $month){
+        $ticket = Ticket::info()->whereYear('created_at','=',$year)->whereMonth('created_at','=',$month)->get();
+        return \Response::json($ticket);
+    }
+
+    public function getTicketUser($user){
+        $ticket = Ticket::info()->where('user_id',$user)->get();
+        return \Response::json($ticket);
+    }
+
+    public function getTicketUserYear($user, $year){
+        $ticket = Ticket::info()->where('user_id',$user)->whereYear('created_at','=',$year)->get();
+        return \Response::json($ticket);
+    }
+
+    public function getTicketUserYearMonth($user, $year, $month){
+        $ticket = Ticket::info()->where('user_id',$user)->whereYear('created_at','=',$year)->whereMonth('created_at','=',$month)->get();
+        return \Response::json($ticket);
+    }
+
 }

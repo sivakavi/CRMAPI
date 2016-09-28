@@ -94,4 +94,24 @@ class AppoinmentController extends Controller
         return \Response::json($appoinment);
     }
 
+    public function getAppoinmentYear($year){
+        $appoinment = Appoinment::info()->whereYear('app_date','=',$year)->get();
+        return \Response::json($appoinment);
+    }
+
+    public function getAppoinmentYearMonth($year, $month){
+        $appoinment = Appoinment::info()->whereYear('app_date','=',$year)->whereMonth('app_date','=',$month)->get();
+        return \Response::json($appoinment);
+    }
+
+    public function getAppoinmentUserYear($user, $year){
+        $appoinment = Appoinment::info()->where('user_id',$user)->whereYear('app_date','=',$year)->get();
+        return \Response::json($appoinment);
+    }
+
+    public function getAppoinmentUserYearMonth($user, $year, $month){
+        $appoinment = Appoinment::info()->where('user_id',$user)->whereYear('app_date','=',$year)->whereMonth('app_date','=',$month)->get();
+        return \Response::json($appoinment);
+    }
+
 }
