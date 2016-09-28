@@ -74,4 +74,18 @@ class ProductController extends Controller
         
     }
 
+
+    /**
+     * Get less Qty Product.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $qty
+     * @return \Illuminate\Http\Response
+     */
+
+    public function lessQty($qty)
+    {
+        $product = Product::with('category')->where('qty','<=', $qty)->get();
+        return \Response::json($product);
+    }
 }
