@@ -13,7 +13,7 @@ class Ticket extends Model
      * @var array
      */
 
-    protected $fillable = ['ticket_name', 'case_id', 'status', 'user_id', 'description'];
+    protected $fillable = ['ticket_name', 'case_id', 'status', 'user_id', 'description', 'assigned_id'];
     
     protected $appends = ['user', 'customer', 'product'];
 
