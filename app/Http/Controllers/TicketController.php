@@ -96,6 +96,11 @@ class TicketController extends Controller
         return \Response::json($ticket);
     }
 
+    public function getCancelCloseTicketUser($id){
+        $ticket = Ticket::info()->where('user_id',$id)->where('status','close')->orWhere('status','cancel')->get();
+        return \Response::json($ticket);
+    }
+
     public function getTicketYear($year){
         $ticket = Ticket::info()->whereYear('created_at','=',$year)->get();
         return \Response::json($ticket);

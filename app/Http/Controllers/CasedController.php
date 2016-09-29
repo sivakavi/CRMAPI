@@ -103,6 +103,11 @@ class CasedController extends Controller
         return \Response::json($case);
     }
 
+    public function getCancelCloseCaseUser($id){
+        $case = Cased::info()->where('user_id',$id)->where('status','close')->orWhere('status','cancel')->get();
+        return \Response::json($case);
+    }
+
     public function getCaseYear($year){
         $case = Cased::info()->whereYear('created_at','=',$year)->get();
         return \Response::json($case);
