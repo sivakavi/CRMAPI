@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Cased as Cased;
+use App\Product as Product;
 
 
 class CasedController extends Controller
