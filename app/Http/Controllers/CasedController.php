@@ -31,12 +31,16 @@ class CasedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $input = $request->all();
-        if(Cased::create($input)){
-        	return response()->json(['status' => '1']);
+        $prdQty = $this->productGetQty($input['product_id']);
+        if($prdQty>=$input['qty']){
+            if(Cased::create($input)){
+                return response()->json(['status' => '1']);
+            }
+            return response()->json(['status' => '0']); 
         }
-        return response()->json(['status' => '0']);
+        return response()->json(['status' => '0', 'error' => "Qty is not Available"]);
 
     }
 
@@ -67,8 +71,11 @@ class CasedController extends Controller
         
         $input = $request->all();
         
+        if($input['status'] == 'close'){
+            $this->updateProductQty($input['product_id'], $input['qty']);
+        }
         if($case->fill($input)->save()){
-        	return response()->json(['status' => '1']);
+            return response()->json(['status' => '1']);
         }
         return response()->json(['status' => '0']);
         
@@ -119,6 +126,16 @@ class CasedController extends Controller
     public function getCaseUserYearMonth($user, $year, $month){
         $case = Cased::info()->where('user_id',$user)->whereYear('created_at','=',$year)->whereMonth('created_at','=',$month)->get();
         return \Response::json($case);
+    }
+
+    public function updateProductQty($id, $qty)
+    {
+        $product = Product::findOrFail($id);
+        $product->decrement('qty', $qty);
+    }
+
+    public function productGetQty($id){
+        return Product::find($id)->pluck('qty');
     }
 
 }
