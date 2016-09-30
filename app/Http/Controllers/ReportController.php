@@ -163,6 +163,7 @@ class ReportController extends Controller
             $product[$prod_id]['product_id'] = $prod_id;
             $product[$prod_id]['category_id'] = $case['product']['category_id'];
             $product[$prod_id]['prod_name'] = $case['product']['prod_name'];
+            $product[$prod_id]['unitprice'] = $case['product']['price'];
             if(!array_key_exists('tot_qty',$product[$prod_id])){
                 $product[$prod_id]['tot_qty'] = 0;
             }
